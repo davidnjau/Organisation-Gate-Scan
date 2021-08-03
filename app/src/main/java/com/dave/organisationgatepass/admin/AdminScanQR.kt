@@ -43,15 +43,7 @@ class AdminScanQR : AppCompatActivity() {
             runOnUiThread {
 
                 val scannedResult = it.text
-                if (scannedResult.contains("signature")){
-
-
-                }else{
-
-
-
-                }
-
+                Log.e("-*-*- ", scannedResult)
 
 
             }

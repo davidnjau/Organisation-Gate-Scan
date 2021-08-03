@@ -19,6 +19,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:visibility="gone"
             android:background="@drawable/layout_outline"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -61,7 +62,7 @@
             android:paddingBottom="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/cardView1"
+            android:id="@+id/cardViewGenerateQR"
             app:cardElevation="10dp"
             app:cardCornerRadius="50dp"
             android:layout_width="match_parent"
@@ -121,7 +122,7 @@
             tools:listitem="@layout/employee_data"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerViewUsers"
             android:scrollbars="vertical"
             android:layout_height="match_parent"/>
 

@@ -53,4 +53,17 @@ class Formatter {
             false
         }
 
+    fun getHeaders(context: Context): HashMap<String, String> {
+
+
+        val preferencesDetails = SharedPreferenceStorage(
+            context,
+            context.resources.getString(R.string.app_name))
+        val getData: HashMap<String, String> = preferencesDetails.getSavedData("profile")
+        val access_token = getData["accessToken"]
+        var stringStringMap = HashMap<String, String>()
+        stringStringMap["Authorization"] = " Bearer $access_token"
+
+        return stringStringMap
+    }
 }
