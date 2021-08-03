@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFC442</color>
+    <color name="colorPrimaryDark">#B8881D</color>
+    <color name="colorAccent">#FAD992</color>
+    <color name="colorBackground">#FFFFFA</color>
+    <color name="colorBaige">#4AFFC442</color>
+    <color name="colorBaige2">#BAA28E</color>
+    <color name="colorSave">#5A670D</color>
+    <color name="colorNew">#DDD1C6</color>
+    <color name="colorBlue">#3700B3</color>
+    <color name="colorTransparent">#BFD3C5C3</color>
+    <color name="colorGray">#777676</color>
+
+    <color name="colorSuccess">#00AA5D</color>
+    <color name="colorError">#F05A5E</color>
+    <color name="colorWarning">#F3C95C</color>
+    <color name="colorInfo">#4F48F0</color>
+    <color name="colorParcel">#73D7FF</color>
+
+    <color name="colorBlack">#090909</color>
+    <color name="colorWhite">#F6F6F6</color>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_height="150dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.chip.Chip
+            app:theme="@style/Theme.OrganisationGatePass"
+            app:chipStrokeWidth="1dp"
+            app:chipStrokeColor="@color/colorPrimaryDark"
+            app:chipBackgroundColor="@color/colorBaige"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:text="Scanning..."
+            android:id="@+id/chipStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

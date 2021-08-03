@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminScanQR">
+
+    <include
+        android:id="@+id/customToolbar"
+        layout="@layout/custom_back_toolbar" />
+
+    <LinearLayout
+        android:layout_below="@+id/customToolbar"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.chip.Chip
+                    app:theme="@style/Theme.OrganisationGatePass"
+                    app:chipStrokeWidth="1dp"
+                    app:chipStrokeColor="@color/colorPrimaryDark"
+                    app:chipBackgroundColor="@color/colorBaige"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:text="Start Scanning..."
+                    android:id="@+id/chipStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:elevation="20dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:background="@color/colorPrimary"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/circular_bac"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp">
+
+                                <ImageButton
+                                    android:background="@drawable/ic_action_check"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingStart="15dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:textStyle="bold"
+                                    android:gravity="center"
+                                    android:textColor="@color/colorBlack"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="9:30 \nAM"
+                                    android:textAllCaps="false"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:text="James John Doe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:text="Kitchen"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_marginBottom="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.budiyev.android.codescanner.CodeScannerView
+                android:id="@+id/scanner_view1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:autoFocusButtonColor="@android:color/white"
+                app:autoFocusButtonVisible="true"
+                app:flashButtonColor="@android:color/white"
+                app:flashButtonVisible="true"
+                app:frameColor="@android:color/white"
+                app:frameCornersSize="50dp"
+                app:frameCornersRadius="0dp"
+                app:frameAspectRatioWidth="1"
+                app:frameAspectRatioHeight="1"
+                app:frameSize="0.75"
+                app:frameThickness="2dp"
+                app:maskColor="#77000000"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/bottom_navigation"
+        layout="@layout/custom_bottom_navigation" />
+
+
+</RelativeLayout>

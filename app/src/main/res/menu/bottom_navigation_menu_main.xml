@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_action_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_scans"
+        android:icon="@drawable/ic_action_scans"
+        android:title="Scans" />
+
+    <item
+        android:id="@+id/navigation_generate"
+        android:icon="@drawable/ic_action_persons"
+        android:title="Staff" />
+
+    <item
+        android:id="@+id/navigation_camera"
+        android:icon="@drawable/ic_action_camera"
+        android:title="Camera" />
+
+
+
+
+</menu>
