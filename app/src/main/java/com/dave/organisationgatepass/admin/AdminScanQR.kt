@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,7 +18,12 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.dave.organisationgatepass.R
 import com.dave.organisationgatepass.helperClass.Formatter
+import com.dave.organisationgatepass.retrofit.helperClasses.DbUserDetails
 import com.google.android.material.chip.Chip
+import kotlinx.android.synthetic.main.activity_admin_scan_qr.*
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AdminScanQR : AppCompatActivity() {
 
@@ -31,6 +37,9 @@ class AdminScanQR : AppCompatActivity() {
 
         Formatter().customBottomNavigation(this)
 
+        chipStatus = findViewById(R.id.chipStatus)
+
+
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view1)
         codeScanner = CodeScanner(this, scannerView)
         codeScanner.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
@@ -41,10 +50,24 @@ class AdminScanQR : AppCompatActivity() {
         codeScanner.isFlashEnabled = false // Whether to enable flash or not
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
+                chipStatus.text = "Scanning.."
 
                 val scannedResult = it.text
-                Log.e("-*-*- ", scannedResult)
+                val json = JSONObject(scannedResult)
 
+                linearChip.visibility = View.GONE
+                linearDetails.visibility = View.VISIBLE
+
+                val name = json.getString("userName")
+                val role = json.getString("roles")
+                val roleName = role.substring(0, role.length-1)
+
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                val str: String = sdf.format(Date())
+
+                tvTime.text = str
+                tvName.text = name
+                tvRole.text = roleName
 
             }
         }
@@ -61,7 +84,6 @@ class AdminScanQR : AppCompatActivity() {
         scannerView.setOnClickListener {
             codeScanner.startPreview()
         }
-        chipStatus = findViewById(R.id.chipStatus)
 
     }
 

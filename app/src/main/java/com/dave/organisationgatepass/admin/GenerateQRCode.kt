@@ -26,6 +26,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import com.dave.organisationgatepass.retrofit.helperClasses.DbUserDetails
+import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -74,29 +75,49 @@ class GenerateQRCode : AppCompatActivity() {
 
     private fun generateQRCode(userData: DbUserDetails) {
 
-        val manager = getSystemService(WINDOW_SERVICE) as WindowManager
-        val display = manager.defaultDisplay
-        val point = Point()
-        display.getSize(point)
+        val details = userData.details?.userData
+        val rolesList = userData.details?.rolesList
 
-        val width = point.x
-        val height = point.y
+        if (details != null && rolesList != null) {
 
-        var dimen = if (width < height) width else height
-        dimen = dimen * 3 / 4
-        var qrgEncoder = QRGEncoder(userData.toString(), null, QRGContents.Type.TEXT, dimen)
+            val email = details.email
+            val userName = details.name
+            val id = details.id
+            val phoneNumber = details.phone_number
+            val name = details.name
+            val roles = rolesList
 
-        try {
-            var bitmap = qrgEncoder.encodeAsBitmap()
-            var userName = userData.details?.userData?.name
+            var json = JSONObject()
+            json.put("email", email)
+            json.put("userName", userName)
+            json.put("id", id)
+            json.put("phoneNumber", phoneNumber)
+            json.put("name", name)
+            json.put("roles", roles)
 
-            if (userName != null) {
+
+            val manager = getSystemService(WINDOW_SERVICE) as WindowManager
+            val display = manager.defaultDisplay
+            val point = Point()
+            display.getSize(point)
+
+            val width = point.x
+            val height = point.y
+
+            var dimen = if (width < height) width else height
+            dimen = dimen * 3 / 4
+            var qrgEncoder = QRGEncoder(json.toString(), null, QRGContents.Type.TEXT, dimen)
+
+            try {
+                var bitmap = qrgEncoder.encodeAsBitmap()
+
                 saveMediaToStorage(bitmap, userName)
-            }
 
-        } catch (e: WriterException) {
-            Toast.makeText(this, "Please try again..", Toast.LENGTH_SHORT).show()
-            Log.e("Tag", e.toString())
+
+            } catch (e: WriterException) {
+                Toast.makeText(this, "Please try again..", Toast.LENGTH_SHORT).show()
+                Log.e("Tag", e.toString())
+            }
         }
 
     }
