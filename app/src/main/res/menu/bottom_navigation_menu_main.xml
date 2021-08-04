@@ -4,22 +4,22 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_action_home"
-        android:title="Home" />
+        android:title="" />
 
     <item
         android:id="@+id/navigation_scans"
         android:icon="@drawable/ic_action_scans"
-        android:title="Scans" />
+        android:title="" />
 
     <item
         android:id="@+id/navigation_generate"
         android:icon="@drawable/ic_action_persons"
-        android:title="Staff" />
+        android:title="" />
 
     <item
         android:id="@+id/navigation_camera"
         android:icon="@drawable/ic_action_camera"
-        android:title="Camera" />
+        android:title="" />
 
 
 

@@ -25,6 +25,8 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import com.dave.organisationgatepass.helperClass.QRGEncoderLocal
 import com.dave.organisationgatepass.retrofit.helperClasses.DbUserDetails
 import org.json.JSONObject
 import java.io.File
@@ -39,6 +41,7 @@ class GenerateQRCode : AppCompatActivity() {
     private lateinit var sharedpreferences :SharedPreferences
     private lateinit var editor : SharedPreferences.Editor
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_qrcode)
@@ -73,6 +76,7 @@ class GenerateQRCode : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun generateQRCode(userData: DbUserDetails) {
 
         val details = userData.details?.userData
@@ -106,10 +110,11 @@ class GenerateQRCode : AppCompatActivity() {
 
             var dimen = if (width < height) width else height
             dimen = dimen * 3 / 4
-            var qrgEncoder = QRGEncoder(json.toString(), null, QRGContents.Type.TEXT, dimen)
+            val qrgEncoder = QRGEncoderLocal(json.toString(), null, QRGContents.Type.TEXT, dimen, this)
+
 
             try {
-                var bitmap = qrgEncoder.encodeAsBitmap()
+                val bitmap = qrgEncoder.encodeAsBitmap()
 
                 saveMediaToStorage(bitmap, userName)
 

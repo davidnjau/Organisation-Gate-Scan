@@ -20,5 +20,8 @@
 
     <color name="colorBlack">#090909</color>
     <color name="colorWhite">#F6F6F6</color>
+    <color name="colorQR">#C0272D</color>
+
+
 
 </resources>

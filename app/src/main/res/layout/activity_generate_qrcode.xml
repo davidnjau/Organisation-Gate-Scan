@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:visibility="gone"
+            android:layout_marginTop="40dp"
             android:background="@drawable/layout_outline"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -28,30 +28,14 @@
             <TextView
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:text="Emplooyee IDs"
+                android:text="Search Employee.."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <RadioGroup
-                android:orientation="horizontal"
+            <SearchView
+                android:id="@+id/simpleSearchView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="No Id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="Has Id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-
-
-            </RadioGroup>
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
@@ -61,7 +45,7 @@
             android:layout_marginStart="10dp"
             android:paddingBottom="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:id="@+id/cardViewGenerateQR"
             app:cardElevation="10dp"
             app:cardCornerRadius="50dp"
@@ -118,6 +102,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/colorWhite"
             android:layout_marginBottom="60dp"
             tools:listitem="@layout/employee_data"
             android:layout_marginTop="20dp"

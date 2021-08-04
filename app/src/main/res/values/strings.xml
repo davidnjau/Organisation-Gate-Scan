@@ -3,5 +3,12 @@
     <string name="app_name_use">GatePass</string>
     <string name="base_url1">http://192.168.81.34:8083/</string>
 
+    <string name="generate_qr">Generate QR code</string>
+    <string name="arrived_early">Arrived Early</string>
+    <string name="arrived_late">Arrived Late</string>
+    <string name="left_early">Left Early</string>
+    <string name="left_late">Left Late</string>
+    <string name="all_scans">ALL Scans</string>
+    <string name="scan_qr_code">Scan QR code</string>
 
 </resources>
