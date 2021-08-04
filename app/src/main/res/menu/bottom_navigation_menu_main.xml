@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_action_home"
+        android:icon="@drawable/home_selector"
         android:title="" />
 
     <item
         android:id="@+id/navigation_scans"
-        android:icon="@drawable/ic_action_scans"
+        android:icon="@drawable/scans_selector"
         android:title="" />
 
     <item
         android:id="@+id/navigation_generate"
-        android:icon="@drawable/ic_action_persons"
+        android:icon="@drawable/generae_selector"
         android:title="" />
 
     <item
         android:id="@+id/navigation_camera"
-        android:icon="@drawable/ic_action_camera"
+        android:icon="@drawable/camera_selector"
         android:title="" />
 
 

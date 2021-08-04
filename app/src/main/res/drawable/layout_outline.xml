@@ -9,7 +9,7 @@
         />
 
     <solid
-        android:color="@color/colorWhite"
+        android:color="@android:color/white"
         />
 
 

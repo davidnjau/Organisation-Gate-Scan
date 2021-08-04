@@ -3,18 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-anydpi/ic_action_home_checked.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/border_shadow.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/camera_selector.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/circular_bac.xml" value="0.36615384615384616" />
         <entry key="app/src/main/res/drawable/employee_outline.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/generae_selector.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/home_selector.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/layout_outline.xml" value="0.36615384615384616" />
         <entry key="app/src/main/res/drawable/layout_outline2.xml" value="0.36615384615384616" />
         <entry key="app/src/main/res/drawable/main_background.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/scans_selector.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/layout/activity_admin_landing.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/activity_admin_scan_qr.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_detailed_scans.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/activity_generate_qrcode.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_scan_qr.xml" value="0.2341485507246377" />
-        <entry key="app/src/main/res/layout/activity_scan_results.xml" value="0.2341485507246377" />
+        <entry key="app/src/main/res/layout/activity_scan_results.xml" value="0.18" />
         <entry key="app/src/main/res/layout/custom_back_toolbar.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/custom_bottom_navigation.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.2341485507246377" />

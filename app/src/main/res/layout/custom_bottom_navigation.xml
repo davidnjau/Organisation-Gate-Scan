@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@color/colorWhite"
-        app:itemIconTint="@color/colorGray"
+        app:itemIconTint="@color/colorPrimary"
         app:itemTextColor="@color/colorGray"
         app:menu="@menu/bottom_navigation_menu_main" />
 

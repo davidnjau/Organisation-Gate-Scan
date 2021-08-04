@@ -12,7 +12,11 @@ class DetailedScans : AppCompatActivity() {
         setContentView(R.layout.activity_detailed_scans)
 
         Formatter().customBottomNavigation(this)
+        //Check to have this update automatically
+        Formatter().customWaiterToolbar(this, resources.getString(R.string.arrived_early))
 
     }
+
+
 
 }

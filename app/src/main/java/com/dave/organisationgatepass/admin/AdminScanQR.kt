@@ -35,7 +35,8 @@ class AdminScanQR : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_scan_qr)
 
-        Formatter().customBottomNavigation(this)
+
+        Formatter().customWaiterToolbar(this, resources.getString(R.string.scan_qr_code))
 
         chipStatus = findViewById(R.id.chipStatus)
 
@@ -152,7 +153,8 @@ class AdminScanQR : AppCompatActivity() {
         super.onStart()
 
         checkForPermission()
-
+        Formatter().addNavIds(getString(R.string.scan_qr_code), this)
+        Formatter().customBottomNavigation(this)
 
     }
 }

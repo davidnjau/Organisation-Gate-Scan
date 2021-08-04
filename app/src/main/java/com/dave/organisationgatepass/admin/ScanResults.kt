@@ -12,7 +12,7 @@ class ScanResults : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_results)
 
-        Formatter().customBottomNavigation(this)
+        Formatter().customWaiterToolbar(this, resources.getString(R.string.all_scans))
 
         linearArrEarly.setOnClickListener {
 
@@ -39,5 +39,12 @@ class ScanResults : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Formatter().addNavIds(getString(R.string.all_scans), this)
+        Formatter().customBottomNavigation(this)
     }
 }

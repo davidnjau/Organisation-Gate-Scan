@@ -50,7 +50,7 @@ class GenerateQRCode : AppCompatActivity() {
             Context.MODE_PRIVATE)
         editor = sharedpreferences.edit()
 
-        Formatter().customBottomNavigation(this)
+        Formatter().customWaiterToolbar(this, resources.getString(R.string.generate_qr))
         linearLayoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.VERTICAL,
@@ -131,8 +131,8 @@ class GenerateQRCode : AppCompatActivity() {
         super.onStart()
 
         populateRecyclerView()
-
-
+        Formatter().addNavIds(getString(R.string.generate_qr), this)
+        Formatter().customBottomNavigation(this)
     }
 
     private fun populateRecyclerView() {
@@ -206,4 +206,6 @@ class GenerateQRCode : AppCompatActivity() {
     private fun Context.toast(text: String?) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
+
+
 }

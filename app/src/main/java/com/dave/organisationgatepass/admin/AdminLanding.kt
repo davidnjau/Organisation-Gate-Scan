@@ -9,11 +9,11 @@ import kotlinx.android.synthetic.main.activity_admin_landing.*
 
 class AdminLanding : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_landing)
 
-        Formatter().customBottomNavigation(this)
 
         cardViewAllScans.setOnClickListener {
             val intent = Intent(this, ScanResults::class.java)
@@ -29,6 +29,13 @@ class AdminLanding : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Formatter().addNavIds(getString(R.string.home), this)
+        Formatter().customBottomNavigation(this)
 
     }
 }

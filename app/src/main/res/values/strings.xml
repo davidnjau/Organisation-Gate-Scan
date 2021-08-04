@@ -10,5 +10,6 @@
     <string name="left_late">Left Late</string>
     <string name="all_scans">ALL Scans</string>
     <string name="scan_qr_code">Scan QR code</string>
+    <string name="home">home</string>
 
 </resources>
