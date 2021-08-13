@@ -40,6 +40,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textColor="@color/colorBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:id="@+id/tvCalendar"
                     android:text="Select Date"
                     android:drawableEnd="@drawable/ic_action_date"
                     android:layout_width="match_parent"
@@ -77,10 +80,11 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/tvArrivedEarly"
                     android:textSize="40sp"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="4"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -110,11 +114,12 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/tvArrivedLate"
                     android:textSize="40sp"
                     android:textColor="@android:color/holo_red_dark"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="14"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -154,11 +159,12 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/tvDeparturesEarly"
                     android:textSize="40sp"
                     android:textColor="@android:color/holo_red_dark"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="24"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -188,10 +194,11 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/tvDepartureLate"
                     android:textSize="40sp"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="14"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

@@ -22,7 +22,8 @@ class UsersAdapter(
     RecyclerView.Adapter<UsersAdapter.Pager2ViewHolder>() {
 
     var sharedpreferences = context.getSharedPreferences(
-        context.resources.getString(R.string.app_name_use), Context.MODE_PRIVATE);
+        context.resources.getString(R.string.app_name_use), Context.MODE_PRIVATE)
+
     var editor = sharedpreferences.edit()
 
     var selectedCheckBoxList = ArrayList<CheckedBoxes>()
