@@ -13,6 +13,21 @@ import com.dave.organisationgatepass.admin.AdminScanQR
 import com.dave.organisationgatepass.admin.GenerateQRCode
 import com.dave.organisationgatepass.admin.ScanResults
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import com.google.firebase.database.DatabaseError
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+
+
+
 
 class Formatter {
 
@@ -158,6 +173,57 @@ class Formatter {
 
         editor.putString("pageName", pageName)
         editor.apply()
+
+    }
+
+    fun hashWithMD5(s: String): String {
+        try {
+            // Create MD5 Hash
+            val digest: MessageDigest = MessageDigest.getInstance("MD5")
+            digest.update(s.toByteArray())
+            val messageDigest: ByteArray = digest.digest()
+
+            // Create Hex String
+            val hexString = StringBuffer()
+            for (i in messageDigest.indices) hexString.append(
+                Integer.toHexString(
+                    0xFF and messageDigest[i]
+                        .toInt()
+                )
+            )
+            return hexString.toString()
+        } catch (e: NoSuchAlgorithmException) {
+            e.printStackTrace()
+        }
+        return ""
+    }
+
+    suspend fun getStats(context: Context, string: String){
+
+        var job = Job()
+        CoroutineScope(Dispatchers.IO + job).launch {
+
+            val database = FirebaseDatabase.getInstance().reference
+            val myRef = database.child(string)
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    if (dataSnapshot.exists()){
+                        val scannedList = dataSnapshot.children.mapNotNull { it.getValue(DbScanned::class.java) }.toList()
+                        Log.e("*-*-*-* " , scannedList.toString())
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("TAG", "Failed to read value.", error.toException())
+                }
+            })
+
+        }.join()
+
 
     }
 }

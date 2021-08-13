@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,13 +19,14 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.dave.organisationgatepass.R
+import com.dave.organisationgatepass.helperClass.DbScanned
 import com.dave.organisationgatepass.helperClass.Formatter
-import com.dave.organisationgatepass.retrofit.helperClasses.DbUserDetails
 import com.google.android.material.chip.Chip
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_admin_scan_qr.*
-import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.log
 
 class AdminScanQR : AppCompatActivity() {
 
@@ -31,14 +34,19 @@ class AdminScanQR : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
     private val MY_PERMISSIONS_REQUEST_CODE = 123
 
+    private lateinit var database : DatabaseReference
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_scan_qr)
 
+        database = FirebaseDatabase.getInstance().reference
 
         Formatter().customWaiterToolbar(this, resources.getString(R.string.scan_qr_code))
 
         chipStatus = findViewById(R.id.chipStatus)
+
 
 
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view1)
@@ -54,31 +62,22 @@ class AdminScanQR : AppCompatActivity() {
                 chipStatus.text = "Scanning.."
 
                 val scannedResult = it.text
-                val json = JSONObject(scannedResult)
+                formatData(scannedResult)
+//                val json = JSONObject(scannedResult)
+//
+//                linearChip.visibility = View.GONE
+//                linearDetails.visibility = View.VISIBLE
+//
+//                val name = json.getString("userName")
+//                val role = json.getString("roles")
+//                val roleName = role.substring(0, role.length-1)
 
-                linearChip.visibility = View.GONE
-                linearDetails.visibility = View.VISIBLE
-
-                val name = json.getString("userName")
-                val role = json.getString("roles")
-                val roleName = role.substring(0, role.length-1)
-
-                val sdf = SimpleDateFormat("HH:mm:ss")
-                val str: String = sdf.format(Date())
-
-                tvTime.text = str
-                tvName.text = name
-                tvRole.text = roleName
 
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
-
-
                 checkForPermission()
-
-
             }
         }
 
@@ -86,7 +85,73 @@ class AdminScanQR : AppCompatActivity() {
             codeScanner.startPreview()
         }
 
+        radioGroup.setOnCheckedChangeListener { _, _ ->
+            linearScan.visibility = View.VISIBLE
+            codeScanner.startPreview()
+
+        }
+
+        btnScan.setOnClickListener {
+
+            codeScanner.startPreview()
+
+            linearChip.visibility = View.VISIBLE
+            linearDetails.visibility = View.GONE
+
+//            radioGroup.clearCheck()
+
+        }
+
+
+
     }
+
+    private fun formatData(scannedResult: String?) {
+
+        if (scannedResult != null){
+
+            val userName = scannedResult.substring(scannedResult.indexOf("FN") + 3,
+                scannedResult.indexOf("TITLE")-1)
+            val designation = scannedResult.substring(scannedResult.indexOf("TITLE") + 6, scannedResult.indexOf("ORG"))
+
+            linearChip.visibility = View.GONE
+            linearDetails.visibility = View.VISIBLE
+
+            val sdf = SimpleDateFormat("hh:mm a")
+            val time: String = sdf.format(Date())
+
+            tvTime.text = time
+            tvName.text = userName
+            tvRole.text = designation
+
+            val newKey = Formatter().hashWithMD5(userName)
+
+            val formatter = SimpleDateFormat("ddMMyyyy")
+            val date = Date()
+            val todayDate = formatter.format(date)
+
+            val selectedId = radioGroup.checkedRadioButtonId
+            val radioButton = findViewById<RadioButton>(selectedId)
+            val selectedStatus = radioButton.text
+            var  timeStatus = ""
+            if (selectedStatus == "Arrival Time"){
+                timeStatus = "arrivalTime"
+            }
+            if (selectedStatus == "Departure Time"){
+                timeStatus = "departureTime"
+            }
+
+            val myRef = database.child(todayDate).child(newKey)
+            myRef.child("userName").setValue(userName)
+            myRef.child(timeStatus).setValue(time)
+
+            Toast.makeText(this, "$selectedStatus saved successfully.", Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
+
+
 
     private fun checkForPermission() {
 

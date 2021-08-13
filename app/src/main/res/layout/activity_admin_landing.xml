@@ -103,11 +103,12 @@
                                 android:padding="30dp">
 
                                 <TextView
+                                    android:id="@+id/tvArrivals"
                                     android:textSize="40sp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
-                                    android:text="30"
+                                    android:text=""
                                     android:textAllCaps="false"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                     android:textStyle="bold" />
@@ -161,11 +162,12 @@
                                 android:padding="30dp">
 
                                 <TextView
+                                    android:id="@+id/tvDepartures"
                                     android:textSize="40sp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
-                                    android:text="10"
+                                    android:text=""
                                     android:textAllCaps="false"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                     android:textStyle="bold" />

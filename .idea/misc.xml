@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-anydpi/ic_action_home_checked.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/border_shadow.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/button_background_ripple.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/camera_selector.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/circular_bac.xml" value="0.36615384615384616" />
         <entry key="app/src/main/res/drawable/employee_outline.xml" value="0.36615384615384616" />
